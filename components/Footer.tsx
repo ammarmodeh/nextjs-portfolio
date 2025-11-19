@@ -1,4 +1,5 @@
 // components/Footer.tsx
+import Image from "next/image";
 import { FaLocationArrow } from "react-icons/fa6";
 import { socialMedia } from "@/data";
 import MagicButton from "./MagicButton";
@@ -9,11 +10,13 @@ const Footer = () => {
   return (
     <footer className="w-full pt-20 pb-10 relative" id="contact">
       {/* Background Grid */}
-      <div className="w-full absolute left-0 -bottom-72 min-h-96 pointer-events-none">
-        <img
+      <div className="w-full absolute left-0 -bottom-72 min-h-96 pointer-events-none overflow-hidden">
+        <Image
           src="/footer-grid.svg"
-          alt="grid"
-          className="w-full h-full opacity-50"
+          alt=""
+          fill
+          className="object-cover opacity-50"
+          aria-hidden="true"
         />
       </div>
 
@@ -37,7 +40,7 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="flex flex-col md:flex-row justify-between items-center mt-16 gap-8 relative z-10">
-        {/* Copyright + Powered By */}
+        {/* Copyright + Powered By (Now with Sentry) */}
         <div className="text-center md:text-left space-y-2">
           <p className="text-sm md:text-base text-gray-400 font-light">
             Copyright © {currentYear} Ammar Odeh
@@ -47,8 +50,10 @@ const Footer = () => {
             <span className="font-semibold text-white">Next.js 14</span>
             <span className="hidden sm:inline">•</span>
             <span className="text-gray-500">
-              App Router • TypeScript • Tailwind
+              React 18 • TypeScript • Tailwind • Aceternity
             </span>
+            <span className="hidden sm:inline">•</span>
+            <span className="font-medium text-purple-400">Sentry</span>
           </p>
         </div>
 
@@ -63,9 +68,9 @@ const Footer = () => {
               aria-label={link.name}
               className="group w-12 h-12 flex justify-center items-center bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-white/20 hover:scale-110 transition-all duration-300"
             >
-              <img
+              <Image
                 src={link.img}
-                alt={link.name}
+                alt=""
                 width={24}
                 height={24}
                 className="opacity-80 group-hover:opacity-100 transition-opacity"

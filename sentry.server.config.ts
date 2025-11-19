@@ -6,7 +6,7 @@ import * as Sentry from "@sentry/nextjs";
 const { nodeProfilingIntegration } = require("@sentry/profiling-node");
 
 Sentry.init({
-  dsn: "https://a190ff1efc83cd19e3192db00439e10b@o4510391112368128.ingest.de.sentry.io/4510391119315025",
+  dsn: process.env.NEXT_PUBLIC_SENTRY_SERVER_DSN,
 
   integrations: [nodeProfilingIntegration()],
 

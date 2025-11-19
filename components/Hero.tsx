@@ -68,14 +68,14 @@ export default function Hero() {
       <div className="relative z-10 flex-1 mx-auto max-w-6xl pt-16 lg:pt-20 pb-8 lg:pb-12 flex items-center justify-center">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start w-full">
           {/* LEFT COLUMN */}
-          <div className="space-y-8">
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-cyan-500/10 to-violet-500/10 border border-cyan-500/20 rounded-full text-xs font-medium text-cyan-300">
               <Sparkles className="w-3.5 h-3.5" />
               Full-Stack Developer · Jordan
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-violet-200 leading-tight">
-              Ammar
+              Ammar Odeh
             </h1>
 
             <div className="flex items-center gap-3">
@@ -158,14 +158,14 @@ export default function Hero() {
           </span>
         </div>
 
-        <div className="flex gap-4">
+        {/* <div className="flex gap-4">
           <a
             href="/resume.pdf"
             className="px-6 py-3.5 bg-white/10 border border-white/20 text-white font-medium rounded-xl hover:bg-white/20 backdrop-blur-sm transition-all duration-300 hover:border-white/30"
           >
             Download Resume
           </a>
-        </div>
+        </div> */}
       </div>
 
       {/* TECH STACK WITH ICONS */}
