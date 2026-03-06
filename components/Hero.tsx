@@ -32,31 +32,100 @@ import {
   SiClerk,
   SiGit,
   SiGithub,
+  SiExpo
 } from "react-icons/si";
 
 export default function Hero() {
-  const techStack = [
-    { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
-    { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
-    { name: "HTML", icon: SiHtml5, color: "text-orange-600" },
-    { name: "CSS", icon: SiCss3, color: "text-blue-500" },
-    { name: "React", icon: SiReact, color: "text-cyan-500" },
-    { name: "Next.js", icon: SiNextdotjs, color: "text-white" },
-    { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-400" },
-    { name: "Node.js", icon: SiNodedotjs, color: "text-green-500" },
-    { name: "Express.js", icon: SiExpress, color: "text-gray-400" },
-    { name: "MongoDB", icon: SiMongodb, color: "text-green-600" },
-    { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-700" },
-    { name: "Firebase", icon: SiFirebase, color: "text-orange-500" },
-    { name: "Sanity CMS", icon: SiSanity, color: "text-red-600" },
-    { name: "WordPress", icon: SiWordpress, color: "text-blue-600" },
-    { name: "Docker", icon: SiDocker, color: "text-blue-500" },
-    { name: "GitHub Actions", icon: SiGithubactions, color: "text-orange-600" },
-    { name: "AWS", icon: SiAmazonaws, color: "text-orange-500" },
-    { name: "Nginx", icon: SiNginx, color: "text-green-500" },
-    { name: "Clerk", icon: SiClerk, color: "text-purple-600" },
-    { name: "Git", icon: SiGit, color: "text-orange-600" },
-    { name: "GitHub", icon: SiGithub, color: "text-white" },
+  const frontendTech = [
+    {
+      subCategory: "Basics",
+      items: [
+        { name: "HTML", icon: SiHtml5, color: "text-orange-600" },
+        { name: "CSS", icon: SiCss3, color: "text-blue-500" },
+        { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
+        { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
+      ],
+    },
+    {
+      subCategory: "Frameworks",
+      items: [
+        { name: "React", icon: SiReact, color: "text-cyan-500" },
+        { name: "Next.js", icon: SiNextdotjs, color: "text-white" },
+        { name: "React Native Expo", icon: SiExpo, color: "text-blue-400" },
+      ],
+    },
+    {
+      subCategory: "Styling",
+      items: [
+        { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-400" },
+      ],
+    },
+  ];
+
+  const backendTech = [
+    {
+      subCategory: "Technology",
+      items: [
+        { name: "Node.js", icon: SiNodedotjs, color: "text-green-500" },
+        { name: "Express.js", icon: SiExpress, color: "text-gray-400" },
+        { name: "WordPress", icon: SiWordpress, color: "text-blue-600" },
+      ],
+    },
+    {
+      subCategory: "Version control",
+      items: [
+        { name: "Git", icon: SiGit, color: "text-orange-600" },
+        { name: "GitHub", icon: SiGithub, color: "text-white" },
+      ],
+    },
+    {
+      subCategory: "API & Services",
+      items: [
+        { name: "Firebase", icon: SiFirebase, color: "text-orange-500" },
+        { name: "Clerk", icon: SiClerk, color: "text-purple-600" },
+        { name: "Sanity CMS", icon: SiSanity, color: "text-red-600" },
+      ],
+    },
+  ];
+
+  const databaseTech = [
+    {
+      subCategory: "Relational (RDBMS)",
+      items: [
+        { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-700" },
+      ],
+    },
+    {
+      subCategory: "NoSQL",
+      items: [{ name: "MongoDB", icon: SiMongodb, color: "text-green-600" }],
+    },
+  ];
+
+  const devopsTech = [
+    {
+      subCategory: "Infrastructure",
+      items: [
+        { name: "AWS", icon: SiAmazonaws, color: "text-orange-500" },
+        { name: "Nginx", icon: SiNginx, color: "text-green-500" },
+      ],
+    },
+    {
+      subCategory: "Automation",
+      items: [
+        { name: "GitHub Actions", icon: SiGithubactions, color: "text-orange-600" },
+      ],
+    },
+    {
+      subCategory: "Visualizations",
+      items: [{ name: "Docker", icon: SiDocker, color: "text-blue-500" }],
+    },
+  ];
+
+  const allCategories = [
+    { title: "Frontend", items: frontendTech },
+    { title: "Backend", items: backendTech },
+    { title: "Database", items: databaseTech },
+    { title: "DevOps", items: devopsTech },
   ];
 
   return (
@@ -130,13 +199,13 @@ export default function Hero() {
             {/* Years & Projects */}
             <div className="grid grid-cols-2 gap-8">
               <div className="text-center">
-                <div className="text-4xl font-bold text-cyan-400">2+</div>
+                <div className="text-4xl font-bold text-cyan-400">3+</div>
                 <p className="text-xs text-slate-500 uppercase tracking-wider mt-2">
                   Years Experience
                 </p>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-violet-400">3+</div>
+                <div className="text-4xl font-bold text-violet-400">3</div>
                 <p className="text-xs text-slate-500 uppercase tracking-wider mt-2">
                   Projects Delivered
                 </p>
@@ -175,38 +244,46 @@ export default function Hero() {
             Technologies I work with
           </p>
 
-          {/* Desktop: Grid with Icons */}
-          <div className="hidden md:grid grid-cols-4 lg:grid-cols-6 gap-4">
-            {techStack.map((tech) => (
+          {/* Categories Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
+            {allCategories.map((category) => (
               <div
-                key={tech.name}
-                className="group flex items-center gap-3 px-5 py-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+                key={category.title}
+                className="flex flex-col space-y-6 bg-zinc-900/40 p-5 rounded-2xl border border-white/5 h-full"
               >
-                <tech.icon
-                  className={`w-6 h-6 ${tech.color} group-hover:scale-110 transition-transform`}
-                />
-                <span className="text-xs font-medium text-slate-300">
-                  {tech.name}
-                </span>
+                <h4 className="text-xl font-black text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-400 pb-2 border-b border-white/10">
+                  {category.title}
+                </h4>
+
+                <div className="flex flex-col space-y-6">
+                  {category.items.map((sub) => (
+                    <div key={sub.subCategory} className="flex flex-col space-y-3">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-cyan-500 opacity-80" />
+                        <h5 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                          {sub.subCategory}
+                        </h5>
+                      </div>
+                      <div className="grid gap-2">
+                        {sub.items.map((tech) => (
+                          <div
+                            key={tech.name}
+                            className="group flex items-center gap-3 px-3 py-2.5 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+                          >
+                            <tech.icon
+                              className={`w-4 h-4 ${tech.color} group-hover:scale-110 transition-transform`}
+                            />
+                            <span className="text-xs font-semibold text-slate-300">
+                              {tech.name}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
-          </div>
-
-          {/* Mobile: Infinite Carousel with Icons */}
-          <div className="md:hidden overflow-hidden">
-            <div className="flex animate-scroll whitespace-nowrap">
-              {[...techStack, ...techStack].map((tech, i) => (
-                <div
-                  key={i}
-                  className="inline-flex items-center gap-3 px-6 py-4 mx-3 bg-white/5 border border-white/10 rounded-xl flex-shrink-0"
-                >
-                  <tech.icon className={`w-6 h-6 ${tech.color}`} />
-                  <span className="text-sm font-medium text-slate-300">
-                    {tech.name}
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>

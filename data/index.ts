@@ -85,9 +85,9 @@ export const projects = [
     id: 1,
     title: "Intercultural Network - Travelers Community",
     des: "A full-stack MERN social media platform designed to connect users across cultures through content sharing and community engagement. Built with React, Node.js, Express, MongoDB, Redux, Material-UI, and TailwindCSS. Deployed on AWS EC2 with S3 for asset storage. Includes an Admin Dashboard for user management and analytics, a secure role-based Membership Gateway for content access control, and an advanced User Analytics Dashboard.",
-    img: "/social-media-app.png",
-    compareBefore: "/social-media-app-comp1.png", // Figma / Design
-    compareAfter: "/social-media-app-comp2.png",
+    img: "/sma-main-2.png",
+    compareBefore: "/sma-before-2.png", // Figma / Design
+    compareAfter: "/sma-after-2.png",
     iconLists: [
       "/re.svg",
       "/nodejs.svg",
@@ -100,12 +100,13 @@ export const projects = [
       "/aws.svg",
       "/nginx.svg",
     ],
-    link: "https://www.intercultural.network",
+    // link: "https://www.intercultural.network",
+    link: "https://i-network.onrender.com",
   },
   {
     id: 2,
-    title: "Nokia Quality Task Tracker",
-    des: "A private B2B web portal for quality assurance and team performance management at Nokia. This full-stack task/violation tracking application enables supervisors to log, track, and analyze team violations, generate detailed statistics and analytics dashboards, apply financial deductions or penalties, and manage theoretical & practical evaluation workflows. Features drag-and-drop task boards, advanced data grids, interactive charts (Chart.js + Recharts), export capabilities (CSV/Excel), QR code generation, and a comprehensive role-based admin system. Built with modern React 19 ecosystem, MUI, TailwindCSS, Redux Toolkit, React Query, and a secure Node.js/Express + MongoDB backend with JWT authentication.",
+    title: "AI-driven Task Tracker - Private Portal",
+    des: "A private B2B web portal for quality assurance and team performance management at Nokia (Access restricted to employees). This full-stack task/violation tracking application uses AI to assist in evaluating team performance. It enables supervisors to log, track, and analyze team violations, generate detailed statistics and analytics dashboards, apply financial deductions or penalties, and manage theoretical & practical evaluation workflows. Features drag-and-drop task boards, advanced data grids, interactive charts (Chart.js + Recharts), export capabilities (CSV/Excel), QR code generation, and a comprehensive role-based admin system. Built with modern React 19 ecosystem, MUI, TailwindCSS, Redux Toolkit, React Query, and a secure Node.js/Express + MongoDB backend with JWT authentication.",
     img: "/qops-tracker.png",
     compareBefore: "/qops-tracker-comp1.png", // Figma / Design
     compareAfter: "/qops-tracker-comp2.png",
@@ -125,10 +126,10 @@ export const projects = [
   {
     id: 3,
     title: "Bye Bye Etiquette - Food Truck Order Manager",
-    des: "A full-stack web application for managing food truck operations, focused on creating, tracking, and fulfilling customer orders in real-time. Designed for food trucks based in Florida, USA, it features a cash-on-delivery system, interactive Google Maps integration for location tracking, live order updates via WebSockets, order history and analytics with interactive charts (Recharts & Chart.js), Excel export capabilities, and secure user authentication. Built with React 19, Redux Toolkit, TailwindCSS, Framer Motion for smooth animations, Firebase for additional services, and a robust Node.js/Express backend with MongoDB and Socket.io for real-time communication. Deployed on Render for scalable hosting.",
-    img: "/food-truck-app.png",
-    compareBefore: "/food-truck-app-comp1.png", // Figma / Design
-    compareAfter: "/food-truck-app-comp2.png",
+    des: "A full-stack web application for managing food truck operations, focused on creating, tracking, and fulfilling customer orders in real-time. Designed for food trucks based in Florida, USA, it features a cash-on-delivery system, interactive Google Maps integration for location tracking, live order updates via WebSockets, order history and analytics with interactive charts (Recharts & Chart.js), Excel export capabilities, and secure user authentication (Note: Account creation requires a US mobile number for verification, so it only works in the United States). Built with React 19, Redux Toolkit, TailwindCSS, Framer Motion for smooth animations, Firebase for additional services, and a robust Node.js/Express backend with MongoDB and Socket.io for real-time communication. Deployed on Render for scalable hosting.",
+    img: "/bbe-main-2.png",
+    compareBefore: "/bbe-before-2.png", // Figma / Design
+    compareAfter: "/bbe-after-2.png",
     iconLists: [
       "/re.svg",
       "/tail.svg",
