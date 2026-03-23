@@ -52,7 +52,7 @@ export const BentoGridItem = ({
   const [copied, setCopied] = useState(false);
 
   const leftLists = ["ReactJS", "Express", "Typescript"];
-  const rightLists = ["React Router v7", "TailwindCSS", "Prisma", "MongoDB"];
+  const rightLists = ["Remix", "TailwindCSS", "Prisma", "MongoDB"];
 
   const handleCopy = () => {
     navigator.clipboard.writeText("ammarm.odeh@gmail.com");

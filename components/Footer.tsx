@@ -45,10 +45,10 @@ const Footer = () => {
           </p>
           <p className="text-xs text-gray-500 flex items-center gap-2 justify-center md:justify-start flex-wrap">
             <span>Powered by</span>
-            <span className="font-semibold text-white">React Router v7</span>
+            <span className="font-semibold text-white">Remix</span>
             <span className="hidden sm:inline">•</span>
             <span className="text-gray-500">
-              React 18 • TypeScript • Tailwind • Aceternity
+              React 18 • TypeScript • Tailwind
             </span>
           </p>
         </div>

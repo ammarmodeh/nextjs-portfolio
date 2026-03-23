@@ -35,7 +35,8 @@ import {
   SiExpo,
   SiRemix,
   SiGraphql,
-  SiPostman
+  SiPostman,
+  SiMui
 } from "react-icons/si";
 
 const RemixIcon = (props: any) => (
@@ -66,6 +67,8 @@ export default function Hero() {
       subCategory: "Styling",
       items: [
         { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-400" },
+        { name: "MUI", icon: SiMui, color: "text-blue-500" },
+        { name: "Aceternity UI", icon: Sparkles, color: "text-violet-500" },
       ],
     },
   ];
@@ -76,6 +79,12 @@ export default function Hero() {
       items: [
         { name: "Node.js", icon: SiNodedotjs, color: "text-green-500" },
         { name: "Express.js", icon: SiExpress, color: "text-gray-400" },
+      ],
+    },
+    {
+      subCategory: "CMS",
+      items: [
+        { name: "Sanity CMS", icon: SiSanity, color: "text-red-600" },
         { name: "WordPress", icon: SiWordpress, color: "text-blue-600" },
       ],
     },
@@ -93,7 +102,6 @@ export default function Hero() {
         { name: "RESTful APIs", icon: SiPostman, color: "text-orange-500" },
         { name: "Firebase", icon: SiFirebase, color: "text-orange-500" },
         { name: "Clerk", icon: SiClerk, color: "text-purple-600" },
-        { name: "Sanity CMS", icon: SiSanity, color: "text-red-600" },
       ],
     },
   ];
