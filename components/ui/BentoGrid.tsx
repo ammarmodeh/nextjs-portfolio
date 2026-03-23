@@ -1,17 +1,10 @@
-"use client";
-
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 
-// Modern, SSR-safe Lottie for React + Next.js
-import dynamic from "next/dynamic";
 import confetti from "@/data/confetti.json";
 
-// Dynamic import → no "document is not defined" error
-const Lottie = dynamic(() => import("lottie-react"), {
-  ssr: false,
-  loading: () => <div className="w-[400px] h-[200px]" />, // optional subtle placeholder
-});
+// Standard React lazy instead of next/dynamic
+const Lottie = lazy(() => import("lottie-react"));
 
 import { cn } from "@/lib/utils";
 import { BackgroundGradientAnimation } from "./GradientBg";
@@ -59,7 +52,7 @@ export const BentoGridItem = ({
   const [copied, setCopied] = useState(false);
 
   const leftLists = ["ReactJS", "Express", "Typescript"];
-  const rightLists = ["NextJS", "TailwindCSS", "Prisma", "MongoDB"];
+  const rightLists = ["React Router v7", "TailwindCSS", "Prisma", "MongoDB"];
 
   const handleCopy = () => {
     navigator.clipboard.writeText("ammarm.odeh@gmail.com");
@@ -162,12 +155,15 @@ export const BentoGridItem = ({
                   copied ? "opacity-100" : "opacity-0 pointer-events-none"
                 }`}
               >
-                <Lottie
-                  animationData={confetti}
-                  loop={false}
-                  autoplay={copied}
-                  style={{ width: 400, height: 200 }}
-                />
+                <Suspense fallback={<div className="w-[400px] h-[200px]" />}>
+                  {copied && (
+                    <Lottie
+                      animationData={confetti}
+                      loop={false}
+                      style={{ width: 400, height: 200 }}
+                    />
+                  )}
+                </Suspense>
               </div>
 
               <MagicButton

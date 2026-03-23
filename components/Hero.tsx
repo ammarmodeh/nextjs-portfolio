@@ -10,11 +10,12 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { FaAws } from "react-icons/fa";
 import {
   SiJavascript,
   SiTypescript,
   SiHtml5,
-  SiCss3,
+  SiCss,
   SiReact,
   SiNextdotjs,
   SiTailwindcss,
@@ -27,13 +28,19 @@ import {
   SiWordpress,
   SiDocker,
   SiGithubactions,
-  SiAmazonaws,
   SiNginx,
   SiClerk,
   SiGit,
   SiGithub,
-  SiExpo
+  SiExpo,
+  SiRemix,
+  SiGraphql,
+  SiPostman
 } from "react-icons/si";
+
+const RemixIcon = (props: any) => (
+  <img src="/remix-icon.svg" alt="Remix" {...props} />
+);
 
 export default function Hero() {
   const frontendTech = [
@@ -41,7 +48,7 @@ export default function Hero() {
       subCategory: "Basics",
       items: [
         { name: "HTML", icon: SiHtml5, color: "text-orange-600" },
-        { name: "CSS", icon: SiCss3, color: "text-blue-500" },
+        { name: "CSS", icon: SiCss, color: "text-blue-500" },
         { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
         { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
       ],
@@ -51,6 +58,7 @@ export default function Hero() {
       items: [
         { name: "React", icon: SiReact, color: "text-cyan-500" },
         { name: "Next.js", icon: SiNextdotjs, color: "text-white" },
+        { name: "Remix", icon: RemixIcon, color: "" },
         { name: "React Native Expo", icon: SiExpo, color: "text-blue-400" },
       ],
     },
@@ -81,6 +89,8 @@ export default function Hero() {
     {
       subCategory: "API & Services",
       items: [
+        { name: "GraphQL", icon: SiGraphql, color: "text-pink-600" },
+        { name: "RESTful APIs", icon: SiPostman, color: "text-orange-500" },
         { name: "Firebase", icon: SiFirebase, color: "text-orange-500" },
         { name: "Clerk", icon: SiClerk, color: "text-purple-600" },
         { name: "Sanity CMS", icon: SiSanity, color: "text-red-600" },
@@ -105,7 +115,7 @@ export default function Hero() {
     {
       subCategory: "Infrastructure",
       items: [
-        { name: "AWS", icon: SiAmazonaws, color: "text-orange-500" },
+        { name: "AWS", icon: FaAws, color: "text-orange-500" },
         { name: "Nginx", icon: SiNginx, color: "text-green-500" },
       ],
     },

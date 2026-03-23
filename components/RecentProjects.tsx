@@ -1,8 +1,5 @@
-"use client";
-
 import { projects } from "@/data";
 import { ArrowRight, X } from "lucide-react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Compare } from "@/components/ui/compare";
@@ -63,7 +60,7 @@ const RecentProjects = () => {
                         key={i}
                         className="w-8 h-8 bg-white/10 border border-white/20 rounded-lg flex items-center justify-center"
                       >
-                        <Image
+                        <img
                           src={icon}
                           alt="tech"
                           width={16}
@@ -120,11 +117,10 @@ const RecentProjects = () => {
 
                   {/* Hero Image - Split screen on desktop */}
                   <div className="relative h-48 md:h-full md:w-1/2 flex-shrink-0">
-                    <Image
+                    <img
                       src={selectedProject.img}
                       alt={selectedProject.title}
-                      fill
-                      className="object-cover"
+                      className="absolute inset-0 w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-zinc-900" />
                   </div>
@@ -150,7 +146,7 @@ const RecentProjects = () => {
                             key={i}
                             className="w-10 h-10 bg-white/10 border border-white/20 rounded-lg flex items-center justify-center"
                           >
-                            <Image
+                            <img
                               src={icon}
                               alt="tech"
                               width={20}

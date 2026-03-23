@@ -5,13 +5,12 @@ import ThreeGlobe from "three-globe";
 import { useThree, Object3DNode, Canvas, extend } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/globe.json";
+
 declare module "@react-three/fiber" {
   interface ThreeElements {
-    threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe>;
+    threeGlobe: Object3DNode<any, any>;
   }
 }
-
-extend({ ThreeGlobe });
 
 const RING_PROPAGATION_SPEED = 3;
 const aspect = 1.2;
@@ -61,6 +60,7 @@ interface WorldProps {
 let numbersOfRings = [0];
 
 export function Globe({ globeConfig, data }: WorldProps) {
+  const [ThreeGlobe, setThreeGlobe] = useState<any>(null);
   const [globeData, setGlobeData] = useState<
     | {
         size: number;
@@ -72,7 +72,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     | null
   >(null);
 
-  const globeRef = useRef<ThreeGlobe | null>(null);
+  const globeRef = useRef<any>(null);
 
   const defaultProps = {
     pointSize: 1,
@@ -92,11 +92,19 @@ export function Globe({ globeConfig, data }: WorldProps) {
   };
 
   useEffect(() => {
-    if (globeRef.current) {
+    import("three-globe").then((m) => {
+      const ThreeGlobeClass = m.default;
+      extend({ ThreeGlobe: ThreeGlobeClass });
+      setThreeGlobe(() => ThreeGlobeClass);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (globeRef.current && ThreeGlobe) {
       _buildData();
       _buildMaterial();
     }
-  }, [globeRef.current]);
+  }, [globeRef.current, ThreeGlobe]);
 
   const _buildMaterial = () => {
     if (!globeRef.current) return;
@@ -130,6 +138,13 @@ export function Globe({ globeConfig, data }: WorldProps) {
         size: defaultProps.pointSize,
         order: arc.order,
         color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
+        lat: arc.startLat,
+        lng: arc.startLng,
+      });
+      points.push({
+        size: defaultProps.pointSize,
+        order: arc.order,
+        color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
         lat: arc.endLat,
         lng: arc.endLng,
       });
@@ -149,7 +164,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
   };
 
   useEffect(() => {
-    if (globeRef.current && globeData) {
+    if (globeRef.current && globeData && ThreeGlobe) {
       globeRef.current
         .hexPolygonsData(countries.features)
         .hexPolygonResolution(3)
@@ -157,37 +172,37 @@ export function Globe({ globeConfig, data }: WorldProps) {
         .showAtmosphere(defaultProps.showAtmosphere)
         .atmosphereColor(defaultProps.atmosphereColor)
         .atmosphereAltitude(defaultProps.atmosphereAltitude)
-        .hexPolygonColor((e) => {
+        .hexPolygonColor((e: any) => {
           return defaultProps.polygonColor;
         });
       startAnimation();
     }
-  }, [globeData]);
+  }, [globeData, ThreeGlobe]);
 
   const startAnimation = () => {
     if (!globeRef.current || !globeData) return;
 
     globeRef.current
       .arcsData(data)
-      .arcStartLat((d) => (d as { startLat: number }).startLat * 1)
-      .arcStartLng((d) => (d as { startLng: number }).startLng * 1)
-      .arcEndLat((d) => (d as { endLat: number }).endLat * 1)
-      .arcEndLng((d) => (d as { endLng: number }).endLng * 1)
+      .arcStartLat((d: any) => (d as { startLat: number }).startLat * 1)
+      .arcStartLng((d: any) => (d as { startLng: number }).startLng * 1)
+      .arcEndLat((d: any) => (d as { endLat: number }).endLat * 1)
+      .arcEndLng((d: any) => (d as { endLng: number }).endLng * 1)
       .arcColor((e: any) => (e as { color: string }).color)
-      .arcAltitude((e) => {
+      .arcAltitude((e: any) => {
         return (e as { arcAlt: number }).arcAlt * 1;
       })
-      .arcStroke((e) => {
+      .arcStroke((e: any) => {
         return [0.32, 0.28, 0.3][Math.round(Math.random() * 2)];
       })
       .arcDashLength(defaultProps.arcLength)
-      .arcDashInitialGap((e) => (e as { order: number }).order * 1)
+      .arcDashInitialGap((e: any) => (e as { order: number }).order * 1)
       .arcDashGap(15)
-      .arcDashAnimateTime((e) => defaultProps.arcTime);
+      .arcDashAnimateTime((e: any) => defaultProps.arcTime);
 
     globeRef.current
       .pointsData(data)
-      .pointColor((e) => (e as { color: string }).color)
+      .pointColor((e: any) => (e as { color: string }).color)
       .pointsMerge(true)
       .pointAltitude(0.0)
       .pointRadius(2);
@@ -203,7 +218,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
   };
 
   useEffect(() => {
-    if (!globeRef.current || !globeData) return;
+    if (!globeRef.current || !globeData || !ThreeGlobe) return;
 
     const interval = setInterval(() => {
       if (!globeRef.current || !globeData) return;
@@ -221,7 +236,9 @@ export function Globe({ globeConfig, data }: WorldProps) {
     return () => {
       clearInterval(interval);
     };
-  }, [globeRef.current, globeData]);
+  }, [globeRef.current, globeData, ThreeGlobe]);
+
+  if (!ThreeGlobe) return null;
 
   return (
     <>
@@ -234,7 +251,9 @@ export function WebGLRendererConfig() {
   const { gl, size } = useThree();
 
   useEffect(() => {
-    gl.setPixelRatio(window.devicePixelRatio);
+    if (typeof window !== "undefined") {
+      gl.setPixelRatio(window.devicePixelRatio);
+    }
     gl.setSize(size.width, size.height);
     gl.setClearColor(0xffaaff, 0);
   }, []);

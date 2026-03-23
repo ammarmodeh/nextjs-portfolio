@@ -1,5 +1,4 @@
 // components/Footer.tsx
-import Image from "next/image";
 import { FaLocationArrow } from "react-icons/fa6";
 import { socialMedia } from "@/data";
 import MagicButton from "./MagicButton";
@@ -11,11 +10,10 @@ const Footer = () => {
     <footer className="w-full pt-20 pb-10 relative" id="contact">
       {/* Background Grid */}
       <div className="w-full absolute left-0 -bottom-72 min-h-96 pointer-events-none overflow-hidden">
-        <Image
+        <img
           src="/footer-grid.svg"
           alt=""
-          fill
-          className="object-cover opacity-50"
+          className="w-full h-full object-cover opacity-50"
           aria-hidden="true"
         />
       </div>
@@ -40,20 +38,18 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="flex flex-col md:flex-row justify-between items-center mt-16 gap-8 relative z-10">
-        {/* Copyright + Powered By (Now with Sentry) */}
+        {/* Copyright + Powered By */}
         <div className="text-center md:text-left space-y-2">
           <p className="text-sm md:text-base text-gray-400 font-light">
             Copyright © {currentYear} Ammar Odeh
           </p>
           <p className="text-xs text-gray-500 flex items-center gap-2 justify-center md:justify-start flex-wrap">
             <span>Powered by</span>
-            <span className="font-semibold text-white">Next.js 14</span>
+            <span className="font-semibold text-white">React Router v7</span>
             <span className="hidden sm:inline">•</span>
             <span className="text-gray-500">
               React 18 • TypeScript • Tailwind • Aceternity
             </span>
-            <span className="hidden sm:inline">•</span>
-            <span className="font-medium text-purple-400">Sentry</span>
           </p>
         </div>
 
@@ -68,7 +64,7 @@ const Footer = () => {
               aria-label={link.name}
               className="group w-12 h-12 flex justify-center items-center bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-white/20 hover:scale-110 transition-all duration-300"
             >
-              <Image
+              <img
                 src={link.img}
                 alt=""
                 width={24}
