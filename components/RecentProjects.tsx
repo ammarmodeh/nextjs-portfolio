@@ -17,7 +17,7 @@ const RecentProjects = () => {
           {/* Simple Heading */}
           <div className="flex flex-col items-center mb-24 space-y-4">
             <div className="h-1 w-12 bg-white/20 rounded-full" />
-            <h2 className="text-5xl md:text-6xl font-bold text-center text-[#5fe0ff] tracking-tighter">
+            <h2 className="text-5xl md:text-6xl font-bold text-center text-white tracking-tighter">
               Featured Projects
             </h2>
             <p className="text-slate-500 font-medium">Selected works and case studies</p>
